@@ -27,16 +27,13 @@ public class Boss
     public void Magic(int damage)
     {
         // 残りmpを減らす
-        this.mp -= damage;
 
-        if (this.mp < 0)
+        while (this.mp > 5)
         {
-            Debug.Log("MPが足りないため魔法が使えない。");
-        }
-        else
-        {
+            this.mp -= damage;
             Debug.Log("魔法攻撃をした。残りMPは" + this.mp);
         }
+        Debug.Log("MPが足りないため魔法が使えない。");
     }
 
 }
@@ -64,7 +61,7 @@ public class Test : MonoBehaviour {
 
 
         // 配列の要素の大きい順
-        for (int cnt = 4; cnt > 0 ; cnt--)
+        for (int cnt = 4; cnt >= 0 ; cnt--)
         {
             Debug.Log(array[cnt]);  // 配列の要素をすべて表示する
         }
@@ -80,11 +77,10 @@ public class Test : MonoBehaviour {
         //lastboss.Attack();
         //// 防御用の関数を呼び出す
         //lastboss.Defence(3);
+
+
         // 魔法用の関数を呼び出す
-        for (int cnt = 0; cnt < 11; cnt++)
-        {
-            lastboss.Magic(5);
-        }
+        lastboss.Magic(5);
 
 	}
 	
